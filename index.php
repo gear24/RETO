@@ -22,8 +22,10 @@ $inventario = new Inventario([]);
 // Agregar productos quemados al inventario
 $productosQuemados = [
     new Producto(1, "Producto Quemado 1", "Descripción del producto quemado 1", 10.00, 5, "Proveedor 1", "Categoría 1"),
-    new Producto(2, "Producto Quemado 2", "Descripción del producto quemado 2", 15.00, 3, "Proveedor 2", "Categoría 2"),
-    new Producto(3, "Producto Quemado 3", "Descripción del producto quemado 3", 20.00, 2, "Proveedor 3", "Categoría 3"),
+    new Producto(2, "Producto Quemado 2", "Descripción del producto quemado 2", 10.00, 
+    1, "Proveedor 2", "Categoría 2"),
+    new Producto(3, "Producto Quemado 3", "Descripción del producto quemado 3", 20.00, 
+    2, "Proveedor 3", "Categoría 3"),
 ];
 
 // Agregar los productos quemados al inventario
@@ -71,7 +73,8 @@ while($flag){
             echo "Estas generando una nueva venta \n";
             break;
         case 6:
-            echo "Estas generando un informe \n";
+            print_r($inventario->generarInforme());
+            echo "\n";
             break;
         case 7:
             echo "Estas saliendo ... \n";

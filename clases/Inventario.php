@@ -68,10 +68,42 @@ class Inventario
     }
     public function generarInforme()
     {
-        // Generar informe de productos de X precio
-        // Generar informe de productos con stock mas bajo a X numero
-        // Generar informe de productos sin stock
-        // Generar informe de productos con stock actualizado
+        echo "Seleccione un tipo de informe a generar: \n";
+        echo "Generar informe de productos de X precio \n";
+        echo "Generar informe de productos con stock mas bajo a X numero \n";
+        echo "Generar informe de productos sin stock \n";
+        echo "Generar informe de productos con stock actualizado \n";
+#pedimos la opcion a usar
+        $op = prompt("Digite su opcion: \n");
+        switch($op){#usamos el switch para determinar a donde va
+            case 1:
+                $price = prompt("Digite el precio a evaluar para el informe: ");
+                #retornamos la funcion que genera el informe y lo same pal case de abajo
+                return $this->generarInformePorPrecio($price);
+            case 2:
+                $stock = prompt("Digite el stock a evaluar para el informe: ");
+                return $this->generarInformePorStock($stock);
+            default:
+            echo "Esa no es una opcion";
+
+        }
+    }
+
+#filtra en el array listaproductos, para buscar el que matchee* con el filtro proporcionado que debe ser igual
+    public function generarInformePorPrecio($filtro){
+        $papas = ($productosEncontrados = array_filter
+        ($this->listaProductos, fn($producto) => $producto->getPrecio() == $filtro)
+        );
+        return $papas;
+
+    }
+#filtra en el array listaproductos, para buscar el que matchee* con el filtro proporcionado que debe ser menor
+    public function generarInformePorStock($filtro){
+        $papas = ($productosEncontrados = array_filter
+        ($this->listaProductos, fn($producto) => $producto->getStock() <= $filtro)
+        );
+        return $papas;
+
     }
 
 
